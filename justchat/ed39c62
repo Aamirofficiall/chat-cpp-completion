@@ -1,0 +1,9 @@
+[33m63dc1f7[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m can now connect to different chats
+[33med39c62[m New models and API
+[33m7a246a1[m chat navigating, message timestamp and auto scrolling
+[33m33ebff3[m fixed authentication
+[33mb7ee899[m authentication added
+[33me50003e[m chat app created in react
+[33m4eb38c7[m tutorial two (styling + saving and loading messages)
+[33mc25c60a[m readme added
+[33me2ff728[m initial
