@@ -21,9 +21,9 @@ class Message(models.Model):
 
 
 class Chat(models.Model):
+    memebers_name=models.TextField(null=True)
     participants = models.ManyToManyField(Contact, related_name='chats')
     messages = models.ManyToManyField(Message, blank=True,related_name='messages')
 
     def __str__(self):
         return "{}".format(self.pk)
-        # return self.messages
