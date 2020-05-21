@@ -10,7 +10,8 @@ const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
 
 class Sidepanel extends React.Component {
   state = {
-    loginForm: true
+    loginForm: true,
+    chat:{}
   };
 
   waitForAuthDetails() {
@@ -58,29 +59,49 @@ class Sidepanel extends React.Component {
     }
   };
 
+  getUsername = () => {
+    var getUser = localStorage.getItem('username')
+    
+    if (getUser !== undefined && getUser!==null) {
+      var name = getUser.charAt(0).toUpperCase() + getUser.slice(1)
+      return name
+    }
+    // fetch(`http://localhost:8000/chat/${id}`)
+    //   .then(response => response.json())
+    //   .then(res=>{this.setState({chat:res})})
+        
+      // .then(data=>data)
+    // console.log('okkkkkkkkkkkkk',obj)
+    // // this.setState({id:obj.id})
+    // return obj.id
+  }
   render() {
     let activeChats = this.props.chats.map(c => {
+      
       return (
         <Contact
           key={c.id}
-          name="Harvey Specter"
+          name={c.memebers_name}
           picURL="http://emilcarlsson.se/assets/louislitt.png"
           status="busy"
-          chatURL={`/${c.id}`}
-        />
+          chatURL={`${c.memebers_name}`}
+          />
+          
       );
     });
     return (
       <div id="sidepanel">
         <div id="profile">
           <div className="wrap">
-            <img
+            
+            {localStorage.getItem('username')===null?<p>Enter Login info here</p>: <img
               id="profile-img"
               src="http://emilcarlsson.se/assets/mikeross.png"
               className="online"
               alt=""
-            />
-            <p>Mike Ross</p>
+            />}
+            
+            <p>{this.getUsername()}</p>
             <i
               className="fa fa-chevron-down expand-button"
               aria-hidden="true"
@@ -154,13 +175,12 @@ class Sidepanel extends React.Component {
             </div>
           </div>
         </div>
-        <div id="search">
-          <label htmlFor="">
-            <i className="fa fa-search" aria-hidden="true" />
-          </label>
-          <input type="text" placeholder="Search Chats..." />
-        </div>
-        <div id="contacts">
+        
+        
+        {
+          localStorage.getItem('username') === null ? <p></p> :
+            <div>
+            <div id="contacts">
           <ul>{activeChats}</ul>
         </div>
         <div id="bottom-bar">
@@ -173,6 +193,8 @@ class Sidepanel extends React.Component {
             <span>Settings</span>
           </button>
         </div>
+        </div>}
+        
       </div>
     );
   }

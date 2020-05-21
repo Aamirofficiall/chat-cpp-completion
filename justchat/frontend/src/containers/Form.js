@@ -47,7 +47,7 @@ class HorizontalAddChatForm extends React.Component {
 
           
           .then(res => {
-            this.props.history.push(`/${res.data.id}`);
+            this.props.history.push(`/${res.data.memebers_name}`);
             this.props.closeAddChatPopup();
             this.props.getUserChats(this.props.username, this.props.token);
           })

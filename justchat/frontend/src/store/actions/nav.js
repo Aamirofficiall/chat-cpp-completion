@@ -11,3 +11,10 @@ export const closeAddChatPopup = () => {
     type: actionTypes.CLOSE_ADD_CHAT_POPUP
   };
 };
+
+
+export const getChatURL = () => {
+  return {
+    type:actionTypes.GET_CHAT_URL
+  }
+}

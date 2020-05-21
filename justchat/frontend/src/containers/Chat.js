@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import WebSocketInstance from "../websocket";
 import Hoc from "../hoc/hoc";
+import Profile from "./Profile";
 
 class Chat extends React.Component {
   state = { message: "" };
@@ -131,7 +132,9 @@ class Chat extends React.Component {
   render() {
     const messages = this.state.messages;
     return (
+
       <Hoc>
+        <Profile  id={this.props.match.params.chatID} />
         <div className="messages">
           <ul id="chat-log">
             {this.props.messages && this.renderMessages(this.props.messages)}
@@ -169,7 +172,8 @@ class Chat extends React.Component {
 const mapStateToProps = state => {
   return {
     username: state.auth.username,
-    messages: state.message.messages
+    messages: state.message.messages,
+
   };
 };
 

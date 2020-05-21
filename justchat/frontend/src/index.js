@@ -41,4 +41,28 @@ const app = (
   </Provider>
 );
 
+
+
+
+// class Chts extends React.Component {
+//   state = {
+    
+//     books: []
+    
+//   }
+//   componentDidMount() {
+//     fetch('http://localhost:8000/chat/17')
+//       .then(response => response.json())
+//       .then(data => {
+//         this.setState({ books: data });
+//       });
+//   }
+//   render() {
+//     return (
+//       <div>
+//         {console.log(this.state.books)}
+//       </div>
+//     )
+//   }
+// }
 ReactDOM.render(app, document.getElementById("app"));

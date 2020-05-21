@@ -33,7 +33,7 @@ class App extends React.Component {
               isVisible={this.props.showAddChatPopup}
               close={() => this.props.closeAddChatPopup()}
             />
-            <Profile />
+
             <BaseRouter />
           </div>
         </div>
@@ -45,16 +45,21 @@ class App extends React.Component {
 const mapStateToProps = state => {
   return {
     showAddChatPopup: state.nav.showAddChatPopup,
-    authenticated: state.auth.token
+    authenticated: state.auth.token,
+    chats: state.message.chats,
   };
 };
+
+
 
 const mapDispatchToProps = dispatch => {
   return {
     onTryAutoSignup: () => dispatch(actions.authCheckState()),
     closeAddChatPopup: () => dispatch(navActions.closeAddChatPopup()),
     addMessage: message => dispatch(messageActions.addMessage(message)),
-    setMessages: messages => dispatch(messageActions.setMessages(messages))
+    setMessages: messages => dispatch(messageActions.setMessages(messages)),
+    getUserChats: (username, token) =>
+      dispatch(messageActions.getUserChats(username, token)),
   };
 };
 
